@@ -1,0 +1,21 @@
+complexity:
+  active: true
+  LongParameterList:
+    active: true
+    functionThreshold: 6
+    constructorThreshold: 6
+  TooManyFunctions:
+    active: false
+
+style:
+  active: true
+  MagicNumber:
+    active: false
+  MaxLineLength:
+    active: true
+    maxLineLength: 120
+  NewLineAtEndOfFile:
+    active: true
+
+performance:
+  active: true
