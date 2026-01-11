@@ -1,75 +1,39 @@
 [versions]
-spring-boot = "3.5.0"
+gradle = "8.15.4"
+kotlin = "2.0.21"
+jvm-target = "21"
+jdk = "21"
+detekt = "1.23.8"
+ktlint = "12.1.0"
+spring-boot = "3.5.7"
 spring-dependency-management = "1.1.7"
-liquibase-gradle = "2.2.2"
-kotlin = "2.1.21"
-liquibase-hibernate = "4.33.0"
-liquibase-core = "4.27.0"
-picocli = "4.7.5"
-postgresql = "42.7.3"
-snakeyaml = "2.2"
-reflections = "0.10.2"
-jakarta-persistence = "3.1.0"
-
-[plugins]
-spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
-spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
-kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
-liquibase = { id = "org.liquibase.gradle", version.ref = "liquibase-gradle" }
+mockk = "1.13.14"
+junit-jupiter = "5.11.4"
 
 [libraries]
-# Spring Boot (필수만 유지)
-spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring-boot" }
-spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
 
-# Kotlin
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 
-# DB
-postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
 
-# Build-logic용
-liquibase-gradle-plugin = { module = "org.liquibase:liquibase-gradle-plugin", version.ref = "liquibase-gradle" }
-snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
-reflections = { module = "org.reflections:reflections", version.ref = "reflections" }
-jakarta-persistence-api = { module = "jakarta.persistence:jakarta.persistence-api", version.ref = "jakarta-persistence" }
+# build-logic dependencies
+spring-boot-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
+spring-dependency-management-plugin = { module = "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin", version.ref = "spring-dependency-management" }
+detekt-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+ktlint-plugin = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint" }
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+kotlin-jvm-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
 
-## Liquibase Runtime
-liquibase-core = { module = "org.liquibase:liquibase-core", version.ref = "liquibase-core" }
-liquibase-hibernate6 = { module = "org.liquibase.ext:liquibase-hibernate6", version.ref = "liquibase-hibernate" }
-picocli = { module = "info.picocli:picocli", version.ref = "picocli" }
+[plugins]
 
 [bundles]
-# Kotlin 기본
-kotlin-basic = [
-    "kotlin-reflect",
-    "kotlin-stdlib"
-]
-
-# Spring Boot 최소
-spring-boot-core = [
-    "spring-boot-starter"
-]
-
-# Spring Boot 데이터 액세스
-spring-boot-data = [
-    "spring-boot-starter-data-jpa"
-]
-
-# build-logic에서 사용하는 의존성 번들
-build-logic = [
-    "liquibase-gradle-plugin",
-    "snakeyaml",
-    "reflections",
-    "jakarta-persistence-api"
-]
-
-
-
-
-
-
-
+spring-boot-core = ["spring-boot-starter-web", "spring-boot-starter-actuator", "spring-boot-starter-validation", "spring-boot-starter-data-jpa"]
+testing = ["spring-boot-starter-test", "kotlin-test-junit5", "mockk", "junit-jupiter"]

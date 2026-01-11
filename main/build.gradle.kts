@@ -1,14 +1,14 @@
-dependencies {
-    implementation(project(":order"))
-    implementation(project(":product"))
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-security")
+plugins {
+    id("kotlin-convention")
+    id("spring-boot-convention")
+    id("testing-convention")
+}
 
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
-    testImplementation("org.springframework.security:spring-security-test")
+dependencies {
+    implementation(libs.bundles.spring.boot.core)
+    testImplementation(libs.bundles.testing)
 }
 
 tasks.bootJar {
     enabled = true
-    archiveClassifier = ""
 }

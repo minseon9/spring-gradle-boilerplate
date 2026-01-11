@@ -1,5 +1,3 @@
-rootProject.name = "main"
-
 rootDir
     .listFiles()
     ?.filter {
@@ -9,5 +7,19 @@ rootDir
     }?.forEach { include(it.name) }
 
 pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+
     includeBuild("build-logic")
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
