@@ -3,6 +3,11 @@ plugins {
     id("jacoco")
 }
 
+val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+dependencies {
+   testImplementation(libs.findBundle("testing").get())
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }
