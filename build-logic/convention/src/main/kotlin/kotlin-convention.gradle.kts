@@ -20,9 +20,16 @@ kotlin {
             JavaLanguageVersion.of(libs.findVersion("jdk").get().toString()),
         )
     }
+
+    // apiVersion, languageVersion follows kotlin gradle plugin version which is same with kotlin version.
     compilerOptions {
         // https://kotlinlang.org/docs/java-interop.html#jsr-305-support
         freeCompilerArgs.addAll("-Xjsr305=strict")
-        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+
+        jvmTarget.set(
+            org.jetbrains.kotlin.gradle.dsl.JvmTarget.fromTarget(
+                libs.findVersion("jdk").get().toString(),
+            ),
+        )
     }
 }
