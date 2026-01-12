@@ -1,12 +1,15 @@
 plugins {
-    id("kotlin-convention")
     id("spring-boot-convention")
     id("testing-convention")
 }
 
 dependencies {
-    implementation(libs.bundles.spring.boot.core)
-    testImplementation(libs.bundles.testing)
+    implementation(libs.spring.boot.starter.web)
+    implementation(libs.spring.boot.starter.actuator)
+
+    developmentOnly(libs.spring.boot.devtools)
+
+    testImplementation(libs.spring.boot.starter.test)
 }
 
 tasks.bootJar {
