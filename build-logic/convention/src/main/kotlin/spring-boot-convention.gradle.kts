@@ -1,5 +1,6 @@
 plugins {
     id("java-convention")
+    id("kotlin-convention")
 
     // Allows to package executable jar or war archives, run Spring Boot applications, and use the dependency management
     // https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/
@@ -7,10 +8,6 @@ plugins {
 
     // This plugin enables the spring dependency management
     id("io.spring.dependency-management")
-}
-
-dependencies {
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.jar {
