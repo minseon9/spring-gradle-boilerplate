@@ -6,9 +6,6 @@ detekt {
     buildUponDefaultConfig = true
     allRules = false
     config.setFrom("$rootDir/detekt.yml")
-    source.setFrom(
-        "src/main/kotlin",
-    )
 }
 
 val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
